@@ -101,6 +101,7 @@ for m in model.modules():
     if isinstance(m, nn.Conv2d):
         out_channels = m.weight.data.shape[0]
         if layer_id in skip[args.v]:
+            #in skip, we append a mask of all 1 (no mask essentially)
             cfg_mask.append(torch.ones(out_channels))
             cfg.append(out_channels)
             layer_id += 1

@@ -128,6 +128,7 @@ class AverageMeter(object):
         self.count += n
         self.avg = self.sum / self.count
 
+
 skip = {
     'A': [2, 8, 14, 16, 26, 28, 30, 32],
     'B': [2, 8, 14, 16, 26, 28, 30, 32],

@@ -86,8 +86,10 @@ cfg = [32, 64, 'M', 128, 128, 'M', 256, 256, 256, 'M', 256, 256, 256, 'M', 256, 
 cfg_mask = []
 layer_id = 0
 for m in model.modules():
+    #create
     if isinstance(m, nn.Conv2d):
-        out_channels = m.weight.data.shape[0]
+        #create out_channels with same shape as weights we might be pruning
+        out_channels = m.weight.data.shape[0] #cnn filters organised in layers
         if out_channels == cfg[layer_id]:
             cfg_mask.append(torch.ones(out_channels))
             layer_id += 1
